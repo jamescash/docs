@@ -1,0 +1,46 @@
+---
+title: "Designing meaningful metrics"
+description: "Blend quantitative signals with qualitative judgment"
+icon: "ruler"
+---
+
+Metrics shape behavior. Choose them carefully so teams optimize for what users actually value.
+
+## Metric taxonomy
+
+| Type | When to use | Example |
+| --- | --- | --- |
+| **Binary guardrail** | Hard safety or compliance requirements | "Did the response leak PII?" |
+| **Scalar quality** | Nuanced experience judgments | "Rate the helpfulness from 1 (harmful) to 5 (delight)." |
+| **Comparative** | Ranking model variants | "Which output would you send to the user?" |
+| **Operational** | Product performance and cost | Latency, GPU minutes, or refund rate |
+
+## Crafting scalar rubrics
+
+1. **Name each level.** Replace numbers with vivid labels like *Off course*, *On track*, *Exceptional*.
+2. **Anchor with evidence.** Provide an example response for each level and explain *why* it fits.
+3. **Define edge cases.** Clarify how to score partial answers, redactions, or "no response" scenarios.
+
+<Callout icon="scale-balanced" color="teal">
+Even when LLM judges provide the score, write the rubric for humans. Clear, concrete language makes prompts more reliable.
+</Callout>
+
+## Hybrid scoring patterns
+
+<Steps>
+  <Step title="Human primary, model assist">
+    Start with human ratings to set the gold standard. Use model judges to pre-score and triage the most ambiguous cases.
+  </Step>
+  <Step title="Model primary, human audit">
+    Rely on LLM judges for coverage. Sample 5–10% of items for human review. Track agreement and recalibrate prompts when drift appears.
+  </Step>
+  <Step title="Ensemble scores">
+    Combine heuristics, model ratings, and human judgments into a single composite. Weight components based on risk tolerance.
+  </Step>
+</Steps>
+
+## Reporting strategies
+
+- **Disaggregate by segment.** Slice by user persona, language, or scenario type to uncover hidden regressions.
+- **Visualize confidence.** Pair mean scores with variance or rater agreement to show stability.
+- **Tell a before/after story.** When experiments improve metrics, include examples that illustrate the change.

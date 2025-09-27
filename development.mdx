@@ -1,94 +1,64 @@
 ---
-title: 'Development'
-description: 'Preview changes locally to update your docs'
+title: "Evaluation workflow"
+description: "Operationalize your evaluation program from idea to dashboard"
 ---
 
-<Info>
-  **Prerequisites**:
-  - Node.js version 19 or higher
-  - A docs repository with a `docs.json` file
-</Info>
+Follow these loops to keep your evaluations sharp as models and products evolve.
 
-Follow these steps to install and run Mintlify on your operating system.
+## Map the lifecycle
 
-<Steps>
-<Step title="Install the Mintlify CLI">
+<Diagram title="Evaluation lifecycle" height={320}>
+  <DiagramNode x={10} y={50} title="Frame" description="Clarify the decision and select representative scenarios." icon="compass" />
+  <DiagramNode x={35} y={10} title="Design" description="Draft rubrics, success metrics, and reviewer guidance." icon="pen-ruler" />
+  <DiagramNode x={70} y={25} title="Collect" description="Source prompts, contexts, and gold answers if available." icon="boxes-packing" />
+  <DiagramNode x={85} y={70} title="Score" description="Run humans, LLM judges, or hybrid scoring pipelines." icon="scale-balanced" />
+  <DiagramNode x={45} y={85} title="Synthesize" description="Aggregate, visualize, and annotate findings." icon="chart-pie" />
+  <DiagramConnector from={0} to={1} />
+  <DiagramConnector from={1} to={2} />
+  <DiagramConnector from={2} to={3} />
+  <DiagramConnector from={3} to={4} />
+  <DiagramConnector from={4} to={0} />
+</Diagram>
 
-```bash
-npm i -g mint
-```
-</Step>
+Each loop should produce artifacts—rubrics, prompts, dashboards—that future you can reuse.
 
-<Step title="Preview locally">
+## Tooling stack recommendations
 
-Navigate to your docs directory where your `docs.json` file is located, and run the following command:
+| Layer | Purpose | Questions to ask |
+| --- | --- | --- |
+| Source control | Track rubric and prompt changes | Do we review diffs before shipping a new evaluation? |
+| Data warehouse | Store prompts, responses, and scores | Can we join with product telemetry to understand impact? |
+| Orchestration | Automate runs | Can we schedule nightly sweeps and on-demand experiments? |
+| Analytics | Share insights | Can stakeholders self-serve trends and drill into examples? |
 
-```bash
-mint dev
-```
+## Guardrails for human-in-the-loop runs
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+<Accordion>
+  <AccordionItem title="Recruit intentionally">
+    Invite reviewers who represent the diversity of your user base. Rotate them periodically to avoid fatigue and bias creep.
+  </AccordionItem>
+  <AccordionItem title="Train before scoring">
+    Walk through the rubric together, calibrate with example outputs, and capture disagreements as future training data.
+  </AccordionItem>
+  <AccordionItem title="Protect well-being">
+    Some evals involve sensitive content. Offer opt-outs, provide support resources, and remove traumatic prompts when possible.
+  </AccordionItem>
+</Accordion>
 
-</Step>
-</Steps>
+## Automate with empathy
 
-## Custom ports
+Automation accelerates feedback, but keep humans in the loop to catch nuance. Combine approaches:
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
+- **Heuristics:** Lightweight rules that catch obvious failures (PII leaks, policy violations).
+- **Model judges:** LLMs prompted with your rubric to pre-score outputs. Sample human audits ensure alignment.
+- **Live telemetry:** Instrument production flows to surface eval-triggering events, like repeated user edits or conversation abandonment.
 
-```bash
-mint dev --port 3333
-```
+## Close the loop
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+End every run with a narrative:
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
+1. Summarize the top wins and regressions in plain language.
+2. Link to reproduction steps or raw conversations.
+3. Assign owners and due dates for follow-up experiments.
 
-## Mintlify versions
-
-Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
-
-```bash
-npm mint update
-```
-
-## Validating links
-
-The CLI can assist with validating links in your documentation. To identify any broken links, use the following command:
-
-```bash
-mint broken-links
-```
-
-## Deployment
-
-If the deployment is successful, you should see the following:
-
-<Frame>
-  <img src="/images/checks-passed.png" alt="Screenshot of a deployment confirmation message that says All checks have passed." style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Code formatting
-
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of the CLI: `npm remove -g mint`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall the CLI: `npm i -g mint`
-  </Accordion>
-
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the `~/.mintlify` folder. Then run `mint dev` again.
-  </Accordion>
-</AccordionGroup>
-
-Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+When teams act on eval results quickly, models improve faster and trust grows across the organization.

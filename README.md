@@ -1,43 +1,27 @@
-# Mintlify Starter Kit
+# AI Evaluation Playbook Docs
 
-Use the starter kit to get your docs deployed and ready to customize.
+Welcome to the home for everything you need to design, build, and sustain high-quality evaluations for AI systems. This repo powers a Mintlify site focused on practical guidance for teams who want to measure model quality with clarity and rigor.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## What you'll find
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- **Engaging guides** that walk through the mindset, principles, and workflows behind reliable evaluations.
+- **Hands-on playbooks** packed with facilitation tips, stakeholder prompts, and automation recipes.
+- **Templates and rubrics** you can copy-paste into your own tooling to jumpstart experimentation.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+## Local development
 
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
+```bash
+npm install
+npm run dev
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+The docs run on [Mintlify](https://www.mintlify.com). Start the local server with `npm run dev`, then visit `http://localhost:3000` to preview changes.
 
-```
-mint dev
-```
+## Contributing
 
-View your local preview at `http://localhost:3000`.
+1. Create a new branch for your update.
+2. Make your edits using MDX components when they add clarity or interactivity.
+3. Run the local server to verify the formatting and interactive elements.
+4. Open a pull request with a summary of the changes and any new assets you've added.
 
-## Publishing changes
-
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+Whether you're refining prompts, collecting human preference data, or monitoring regressions, these docs should equip you with the patterns to build trustworthy evaluation loops. If you spot a gap or have a new tactic to share, contributions are encouraged!

@@ -1,0 +1,55 @@
+---
+title: "Automation playbook"
+description: "Scale evaluation coverage without losing signal"
+icon: "robot"
+---
+
+Automation extends your reach so you can catch regressions before users do. Use this playbook to design pipelines that are fast, transparent, and trustworthy.
+
+## When to automate
+
+| Signal | Automate when... | Stay manual when... |
+| --- | --- | --- |
+| Guardrail checks | Rules rarely change and failures are binary | Policies are evolving or context heavy |
+| LLM judge scoring | Rubric language is crisp and pilot agreement >80% | Stakes are high or disagreement remains high |
+| Regression suites | Prompts are stable and map to specific release criteria | You're still exploring what "good" looks like |
+
+## Architecture blueprint
+
+<Diagram title="Automation flow" height={280}>
+  <DiagramNode x={10} y={40} title="Trigger" description="PR merge, schedule, or manual run" icon="play" />
+  <DiagramNode x={35} y={10} title="Runner" description="Workflow engine kicks off evaluation job" icon="gears" />
+  <DiagramNode x={65} y={25} title="Scoring" description="LLM judges + heuristics evaluate outputs" icon="robot" />
+  <DiagramNode x={85} y={65} title="Storage" description="Persist prompts, responses, scores, metadata" icon="database" />
+  <DiagramNode x={50} y={85} title="Reporting" description="Dashboards, alerts, and notebook summaries" icon="chart-line" />
+  <DiagramConnector from={0} to={1} />
+  <DiagramConnector from={1} to={2} />
+  <DiagramConnector from={2} to={3} />
+  <DiagramConnector from={3} to={4} />
+</Diagram>
+
+## Prompting LLM judges
+
+- **Mirror the rubric.** Paste the exact evaluation rubric into the system prompt.
+- **Ask for rationale.** Request a short explanation along with the score for auditing.
+- **Calibrate temperature.** Set `temperature=0` for determinism. Use `top_p` or `logprobs` if available to gauge confidence.
+
+## Monitoring drift
+
+<Accordion>
+  <AccordionItem title="Agreement tracking">
+    Compare model-judge scores with periodic human audits. Trigger retraining if agreement falls below your threshold.
+  </AccordionItem>
+  <AccordionItem title="Data freshness">
+    Alert when a scenario hasn't been updated in >60 days or when product changes invalidate prompts.
+  </AccordionItem>
+  <AccordionItem title="Latency & cost">
+    Visualize runtime and spend per run. Highlight outliers to optimize infrastructure.
+  </AccordionItem>
+</Accordion>
+
+## Communicating results
+
+- Pipe critical regressions into incident channels with owner tags.
+- Share weekly digests that combine quantitative trends with a "story of the week" example.
+- Provide self-serve dashboards for product teams to explore their features.

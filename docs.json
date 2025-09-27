@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "AI Evaluation Playbook",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#6366F1",
+    "light": "#A855F7",
+    "dark": "#4338CA"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -22,47 +22,31 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Design fundamentals",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "guides/principles",
+              "guides/metrics",
+              "guides/data"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Execution playbooks",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "playbooks/manual-review",
+              "playbooks/automation",
+              "playbooks/monitoring"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Templates",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Artifacts",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "templates/rubric-example",
+              "templates/checklist"
             ]
           }
         ]
@@ -71,14 +55,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Community",
+          "href": "https://evals.wiki",
+          "icon": "users"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Newsletter",
+          "href": "https://evaluationinsights.example.com",
+          "icon": "envelope"
         }
       ]
     }
@@ -90,33 +74,33 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Contribute",
+        "href": "mailto:evals@docs.example.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Eval toolkit",
+      "href": "https://github.com/"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/",
+      "github": "https://github.com/",
+      "linkedin": "https://linkedin.com/"
     }
   }
 }

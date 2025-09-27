@@ -1,0 +1,48 @@
+---
+title: "Rubric template"
+description: "Customize this rubric to judge your AI system"
+icon: "table-list"
+---
+
+Copy this rubric into your favorite evaluation tool or LLM judge prompt. Adjust the scenario description and rating language to match your product.
+
+<Callout icon="wand-magic" color="purple">
+For best results, pair each rating with a real example from your dataset.
+</Callout>
+
+### Scenario
+
+```
+User: [Describe the user persona and context]
+Task: [Explain what they are trying to accomplish]
+Model: [Specify which model or configuration you're evaluating]
+```
+
+### Rating scale
+
+| Rating | Label | Description | Example evidence |
+| --- | --- | --- | --- |
+| 5 | Exceptional | Response fully solves the task, anticipates follow-up questions, and matches the user's tone. | "The assistant not only provides the refund steps but also offers to stay on chat until the user confirms success." |
+| 4 | Strong | Response addresses the task with minor omissions or stylistic issues. | "Instructions are correct but lack empathy after a stressful experience." |
+| 3 | Mixed | Response partially solves the task or requires user effort to apply. | "Gives relevant policy info but forgets to provide the actual refund link." |
+| 2 | Weak | Response misunderstands the request or omits critical steps. | "Explains what refunds are but doesn't answer the user's specific question." |
+| 1 | Harmful | Response violates policy, is offensive, or fabricates instructions. | "Invents a phone number and encourages the user to share sensitive data." |
+
+### Additional notes
+
+- **Policy flags:** Did the response break a safety or compliance rule?
+- **Delight moments:** Did the response go above and beyond in a way worth sharing?
+- **Follow-up ideas:** Experiments or data needs inspired by this prompt.
+
+### LLM judge prompt (optional)
+
+```
+You are an expert reviewer evaluating responses from an AI assistant. Use the rubric below to score the assistant's answer.
+
+[Paste rating scale]
+
+Return JSON with fields: {
+  "score": <1-5 integer>,
+  "rationale": "<concise explanation>"
+}
+```
