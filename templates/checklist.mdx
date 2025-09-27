@@ -4,33 +4,60 @@ description: "A repeatable list to keep every run sharp"
 icon: "square-check"
 ---
 
-Use this checklist before, during, and after each evaluation cycle. Duplicate it into your project tracker and customize as needed.
-
 ## Before the run
 
-<Checklist>
-  <ChecklistItem>Decision statement documented and shared</ChecklistItem>
-  <ChecklistItem>Latest rubric reviewed and signed off</ChecklistItem>
-  <ChecklistItem>Prompt set refreshed with current scenarios</ChecklistItem>
-  <ChecklistItem>Reviewer roster confirmed (or LLM judge prompt validated)</ChecklistItem>
-  <ChecklistItem>Data privacy review completed for new examples</ChecklistItem>
-</Checklist>
+<Steps>
+<Step title="Clarify the decision">
+Document the decision statement and share it with stakeholders.
+</Step>
+<Step title="Confirm artifacts">
+Review the latest rubric, prompt set, and judge prompts. Version them in source control.
+</Step>
+<Step title="Check compliance">
+Complete any required privacy or policy reviews for new examples.
+</Step>
+<Step title="Secure reviewers">
+Confirm human reviewers or validate the LLM judge prompt with a pilot run.
+</Step>
+</Steps>
 
 ## During the run
 
-<Checklist>
-  <ChecklistItem>Calibration examples reviewed at the start</ChecklistItem>
-  <ChecklistItem>Scores captured with rationale or citations</ChecklistItem>
-  <ChecklistItem>Disagreements logged for later analysis</ChecklistItem>
-  <ChecklistItem>Incidents escalated immediately through the agreed channel</ChecklistItem>
-</Checklist>
+<Steps>
+<Step title="Calibrate">
+Review calibration examples before scoring begins.
+</Step>
+<Step title="Capture evidence">
+Record scores with rationales or citations for each prompt.
+</Step>
+<Step title="Log incidents">
+Escalate safety or policy violations through the agreed channel immediately.
+</Step>
+<Step title="Track disagreements">
+Note disagreements and resolution steps for future training.
+</Step>
+</Steps>
 
 ## After the run
 
-<Checklist>
-  <ChecklistItem>Summary doc published with top insights and actions</ChecklistItem>
-  <ChecklistItem>Tickets created for follow-up experiments or fixes</ChecklistItem>
-  <ChecklistItem>Metrics and examples added to the monitoring dashboard</ChecklistItem>
-  <ChecklistItem>Evaluation artifacts versioned in source control</ChecklistItem>
-  <ChecklistItem>Retrospective scheduled to improve the next cycle</ChecklistItem>
-</Checklist>
+<Steps>
+<Step title="Publish insights">
+Share a summary highlighting wins, regressions, and recommended actions.
+</Step>
+<Step title="Create follow-ups">
+Open tickets for experiments, fixes, or data collection tasks.
+</Step>
+<Step title="Update dashboards">
+Add metrics and examples to your monitoring workspace.
+</Step>
+<Step title="Version artifacts">
+Commit updated rubrics, prompts, and judge prompts with clear changelog entries.
+</Step>
+<Step title="Schedule retrospective">
+Book time to improve the next cycle and celebrate outcomes.
+</Step>
+</Steps>
+
+<Check>
+When every step above is complete, your evaluation run is ready for leadership review.
+</Check>

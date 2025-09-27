@@ -4,43 +4,67 @@ description: "Blend quantitative signals with qualitative judgment"
 icon: "ruler"
 ---
 
-Metrics shape behavior. Choose them carefully so teams optimize for what users actually value.
+## Understand your metric types
 
-## Metric taxonomy
+Pick the right evaluation instrument for the decision at hand.
 
 | Type | When to use | Example |
 | --- | --- | --- |
-| **Binary guardrail** | Hard safety or compliance requirements | "Did the response leak PII?" |
-| **Scalar quality** | Nuanced experience judgments | "Rate the helpfulness from 1 (harmful) to 5 (delight)." |
-| **Comparative** | Ranking model variants | "Which output would you send to the user?" |
-| **Operational** | Product performance and cost | Latency, GPU minutes, or refund rate |
+| **Binary guardrail** | Enforce non-negotiable safety or policy rules | "Did the response leak personal data?" |
+| **Scalar quality** | Capture nuance in usefulness, tone, or accuracy | "Rate the guidance from 1 (harmful) to 5 (delight)." |
+| **Comparative** | Rank model variants or prompt strategies | "Which answer would you send to the user?" |
+| **Operational** | Track latency, cost, and throughput | Token cost, GPU minutes, or handoff rate |
 
-## Crafting scalar rubrics
+<Info>
+Use multiple metric types together. A stellar experience score cannot excuse a guardrail violation.
+</Info>
 
-1. **Name each level.** Replace numbers with vivid labels like *Off course*, *On track*, *Exceptional*.
-2. **Anchor with evidence.** Provide an example response for each level and explain *why* it fits.
-3. **Define edge cases.** Clarify how to score partial answers, redactions, or "no response" scenarios.
-
-<Callout icon="scale-balanced" color="teal">
-Even when LLM judges provide the score, write the rubric for humans. Clear, concrete language makes prompts more reliable.
-</Callout>
-
-## Hybrid scoring patterns
+## Craft a resilient rubric
 
 <Steps>
-  <Step title="Human primary, model assist">
-    Start with human ratings to set the gold standard. Use model judges to pre-score and triage the most ambiguous cases.
-  </Step>
-  <Step title="Model primary, human audit">
-    Rely on LLM judges for coverage. Sample 5–10% of items for human review. Track agreement and recalibrate prompts when drift appears.
-  </Step>
-  <Step title="Ensemble scores">
-    Combine heuristics, model ratings, and human judgments into a single composite. Weight components based on risk tolerance.
-  </Step>
+<Step title="Name each level">
+Replace numeric labels with language reviewers remember, such as *Off course*, *On track*, and *Delight*.
+</Step>
+<Step title="Anchor with evidence">
+Pair each level with real examples or transcripts. Explain why the answer earned that rating.
+</Step>
+<Step title="Clarify edge cases">
+Document how to score partial answers, missing context, or "no response" situations.
+</Step>
 </Steps>
 
-## Reporting strategies
+<Tip>
+Even if an LLM judge scores the output, write the rubric for humans. Precise language improves prompt reliability and auditability.
+</Tip>
 
-- **Disaggregate by segment.** Slice by user persona, language, or scenario type to uncover hidden regressions.
-- **Visualize confidence.** Pair mean scores with variance or rater agreement to show stability.
-- **Tell a before/after story.** When experiments improve metrics, include examples that illustrate the change.
+## Blend humans and automation
+
+<CodeGroup>
+```yaml Human primary
+- Humans score all prompts using the rubric
+- LLM judges pre-score to highlight disagreements
+- Weekly audits compare agreement trends
+```
+
+```yaml Model primary
+- LLM judge produces scores with rationale
+- Humans sample 10% of prompts for calibration
+- Trigger a review if agreement drops below 80%
+```
+
+```yaml Ensemble
+- Combine heuristic checks, model ratings, and human spot checks
+- Weight each component based on risk tolerance
+- Rebalance weights during quarterly retrospectives
+```
+</CodeGroup>
+
+## Report with context
+
+- **Disaggregate by segment:** Slice by persona, geography, and scenario to surface hidden regressions.
+- **Visualize confidence:** Pair mean scores with variance or rater agreement so leaders understand stability.
+- **Tell a story:** Highlight an example conversation that illustrates each major insight.
+
+<Check>
+A strong metric program prompts immediate action: ship improvements, investigate regressions, or gather more data.
+</Check>

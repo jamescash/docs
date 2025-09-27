@@ -1,53 +1,82 @@
 ---
 title: "Quickstart"
-description: "Launch an evaluation sprint in under an hour"
+description: "Run your first evaluation sprint in under an hour"
 ---
 
-You're minutes away from turning intuition into evidence. This quickstart walks a cross-functional team through their first evaluation sprint—whether you're validating a brand-new model or checking that a release candidate still delights users.
+## Overview
 
-## 1. Align on the outcome
+You can launch a credible evaluation sprint with a single working session. This quickstart keeps you focused on decisions, evidence, and momentum so you finish with a repeatable workflow—not just a meeting recap.
+
+<Info>
+Audience: product, research, and data leaders standing up their first AI evaluation. Outcome: an aligned decision statement, draft rubric, pilot results, and action plan.
+</Info>
+
+## Prerequisites
+
+- Core product scenario you want to validate
+- Access to 10–20 representative prompts and responses
+- Decision-maker who can commit to next steps
+
+## Sprint agenda
 
 <Steps>
-  <Step title="Define the decision">
-    What will this evaluation help you decide? Common answers include *ship vs. fix*, *which prompt wins*, or *where to invest data collection*. Write the decision in one sentence and share it with the team.
-  </Step>
-  <Step title="Summarize the user moment">
-    Describe the exact scenario you care about. Capture who the user is, what they are trying to accomplish, and why the moment matters.
-  </Step>
-  <Step title="List success signals">
-    Brainstorm what "good" looks like. Mix objective signals (accuracy, latency, adherence) with subjective ones (tone, confidence). You'll refine these into metrics shortly.
-  </Step>
+<Step title="Frame the decision (15 min)">
+Capture the user moment, the business risk, and the choice you need to make. Write the decision in one sentence and share it with the group.
+
+<Check>
+You have a clear statement such as: "Decide whether Model B is ready to replace Model A for refund chats." 
+</Check>
+</Step>
+
+<Step title="Draft the rubric (20 min)">
+Translate success signals into a 3–5 level rating scale. Pair each level with concrete evidence or example responses.
+
+<Tip>
+Use vivid labels—"Delight," "Fix now"—so reviewers remember what each rating means.
+</Tip>
+</Step>
+
+<Step title="Pilot the workflow (15 min)">
+Run through 5 sample prompts. Capture disagreements, confusing rubric language, and missing context.
+
+<Warning>
+Stop and revise if reviewers disagree on more than half the prompts. Misalignment now becomes chaos later.
+</Warning>
+</Step>
+
+<Step title="Commit to actions (10 min)">
+Summarize findings, assign owners, and schedule the next full run. Publish the decision statement, rubric draft, and pilot notes in your shared workspace.
+</Step>
 </Steps>
 
-## 2. Assemble your eval kit
+## Post-sprint checklist
 
-<Checklist>
-  <ChecklistItem>10–20 real or realistic prompts that illustrate the user moment</ChecklistItem>
-  <ChecklistItem>A draft rubric that translates success signals into 3–5 rating levels</ChecklistItem>
-  <ChecklistItem>At least one example response for each rating level</ChecklistItem>
-  <ChecklistItem>Owners for facilitation, note taking, and follow-up actions</ChecklistItem>
-</Checklist>
+- Version control the rubric and prompt set
+- Decide how you will collect scores (humans, LLM judge, or hybrid)
+- Announce the next evaluation date and success criteria
 
-Use our [rubric template](/templates/rubric-example) if you need a starting point. Keep the rubric language vivid—reviewers should feel the difference between a "meh" output and a "nailed it" response.
+<Check>
+Share a short recap with stakeholders highlighting the decision, top insight, and immediate next experiment.
+</Check>
 
-## 3. Run a pilot session
+## Troubleshooting
 
-<Callout icon="person-chalkboard" color="amber">
-Bring together 2–3 reviewers for a 30-minute dry run. Encourage debate about borderline ratings and document how they resolved disagreements.
-</Callout>
+<AccordionGroup>
+<Accordion title="We cannot agree on ratings">
+Pause the pilot and rewrite the rubric examples using real transcripts. Consider splitting complex prompts into multiple scenarios.
+</Accordion>
 
-During the session:
+<Accordion title="We lack enough prompts">
+Sample from production conversations or support tickets, then de-identify sensitive details. Synthetic prompts are helpful but should not dominate the set.
+</Accordion>
 
-- Timebox each prompt to keep energy high.
-- Capture quotes or screenshots that illustrate each rating.
-- Highlight confusing rubric language and revise on the fly.
+<Accordion title="Stakeholders want more rigor first">
+Run a second pilot with a different reviewer group. Present the disagreement notes and updated rubric to build confidence before scaling.
+</Accordion>
+</AccordionGroup>
 
-## 4. Lock the workflow
+## Next steps
 
-Once the pilot feels smooth, codify the process:
-
-1. **Data source:** Where will prompts and context come from? Ensure you can refresh them later.
-2. **Scoring path:** Decide whether humans, an LLM judge, or a hybrid approach will produce scores.
-3. **Reporting cadence:** Outline who receives the summary and how quickly they should act on regressions.
-
-Document these decisions in your project tracker. Congratulations—you now have a living evaluation you can repeat, automate, and scale.
+<Note>
+Promote the sprint outcome into a living evaluation by following the <a href="/development">evaluation workflow</a>. When you are ready, automate pieces with the <a href="/playbooks/automation">automation playbook</a>.
+</Note>

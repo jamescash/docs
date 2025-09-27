@@ -4,40 +4,58 @@ description: "Anchor your AI evaluation program in values that stand the test of
 icon: "lightbulb"
 ---
 
-Evaluations are cultural artifacts. They communicate what "good" means, who gets to decide, and how seriously you treat quality. Use these principles as your compass.
+## Lead with real user stakes
 
-## 1. Start with a human story
+Evaluations tell a story about the people your AI serves. Start every project with a concrete scenario that captures who is affected, what they need, and why it matters.
 
-<Callout icon="book-open" color="violet">
-Before you collect a single metric, articulate the user story in plain language. Evals grounded in human stakes create empathy and urgency.
-</Callout>
+<Tip>
+Invite customer-facing teammates or real users to review your scenarios. Fresh perspectives uncover blind spots faster than metrics alone.
+</Tip>
 
-- Name the person impacted, not just the persona.
-- Capture the context—constraints, emotions, and success criteria.
-- Invite a real user or customer-facing teammate to validate the story.
+## Measure what truly matters
 
-## 2. Measure what matters, not what's easy
+Guardrails are essential, but they cannot be the whole story. Combine multiple lens:
 
-A/B-friendly metrics are tempting, but superficial signals produce superficial insights. Mix:
+- **Safety and compliance:** Prevent policy violations, sensitive data leaks, and harmful tone.
+- **Experience quality:** Capture usefulness, empathy, and clarity so the model feels trustworthy.
+- **Business impact:** Track cost, efficiency, and retention signals to show why the evaluation matters.
 
-- **Guardrail metrics** that protect safety and compliance.
-- **Experience metrics** that capture usefulness, tone, and trust.
-- **Business metrics** that connect to revenue, retention, or cost.
+<Warning>
+Avoid proxy metrics that reward shortcuts. If a model can game the number, teams will optimize for the wrong behavior.
+</Warning>
 
-## 3. Make disagreement visible
+## Make disagreement visible
 
-Diverse reviewers surface blind spots. Encourage debate and capture it:
+Healthy tension reveals nuance. Record per-rater scores, capture rationales, and highlight the turning points that changed minds.
 
-<Expandable title="How to capture disagreement">
-- Record per-rater scores before discussion.
-- Ask reviewers to annotate why they disagreed and what evidence changed their minds.
-- Store these annotations with the prompt so future reviewers learn faster.
-</Expandable>
+<AccordionGroup>
+<Accordion title="Document productive disagreement">
+- Collect individual scores before any discussion.
+- Ask reviewers to annotate what evidence influenced their final call.
+- Store the conversation alongside the prompt for future calibration.
+</Accordion>
+</AccordionGroup>
 
-## 4. Iterate faster than your model
+## Iterate faster than your model
 
-Ship eval updates as frequently as model updates. Keep a changelog of rubric tweaks, prompt set refreshes, and scoring policy shifts. Pair every release with a smoke test that validates past regressions stay fixed.
+Treat evaluations like software. Version everything, ship updates often, and communicate changes clearly.
 
-## 5. Celebrate the narrative
+<Steps>
+<Step title="Log every change">
+Maintain a changelog for rubric updates, prompt refreshes, and automation tweaks.
+</Step>
+<Step title="Smoke test frequently">
+Re-run past regressions or golden prompts whenever you update the evaluation.
+</Step>
+<Step title="Share release notes">
+Publish short updates so stakeholders know what changed and why confidence remains high.
+</Step>
+</Steps>
 
-Numbers without storytelling rarely inspire action. Use visuals, quotes, and scenarios to bring findings to life. Close with a "director's cut": what surprised you, what you'll watch next, and how product teams can help.
+## Tell a compelling story
+
+Metrics open the door; narratives drive action. Pair charts with user quotes, transcripts, and before/after examples. Close every report with clear guidance on what to do next.
+
+<Check>
+When teams repeat your stories in planning meetings, your evaluation program has become part of the culture.
+</Check>
