@@ -1,0 +1,45 @@
+---
+title: "Data strategies"
+description: "Curate evaluation datasets that stay relevant"
+icon: "database"
+---
+
+Your evaluation is only as good as the scenarios it covers. Treat prompt curation like product research.
+
+## Build a scenario library
+
+1. **Source widely.** Pull examples from support tickets, search logs, UX research, and synthetic stress tests.
+2. **Label context.** Tag each scenario with metadata such as persona, language, risk level, and product surface.
+3. **Store history.** Keep retired prompts in an archive—you may need them when regressions return.
+
+## Refresh with intention
+
+<Accordion>
+  <AccordionItem title="Cadence">
+    Review your library every sprint. Rotate 10–20% of prompts to avoid overfitting and cover new capabilities.
+  </AccordionItem>
+  <AccordionItem title="Diversity">
+    Check that your dataset represents the voices you serve. Monitor distributions by region, language, accessibility needs, and expertise level.
+  </AccordionItem>
+  <AccordionItem title="Ethics">
+    Establish a review council for sensitive prompts. Get sign-off before introducing content that may trigger trauma or legal exposure.
+  </AccordionItem>
+</Accordion>
+
+## Collect gold answers (when possible)
+
+- **Leverage SMEs.** Invite subject-matter experts to draft model answers for high-stakes scenarios.
+- **Capture rationale.** Ask SMEs to explain *why* their answer is correct. The rationale can power future rubrics and fine-tuning.
+- **Track freshness.** Note when ground truth expires (e.g., policy or pricing updates) and set reminders to refresh.
+
+## Handle production data responsibly
+
+<Callout icon="shield" color="rose">
+When sampling real user conversations, scrub personal data, secure storage, and obtain consent where required. High-quality evals should enhance trust, not erode it.
+</Callout>
+
+## Collaborate with data partners
+
+- Align with data engineering on schemas and retention policies.
+- Share evaluation insights with analytics teams to influence data collection roadmaps.
+- Offer product squads a "prompt of the week" so they feel the pulse of real user challenges.
