@@ -4,45 +4,59 @@ description: "Customize this rubric to judge your AI system"
 icon: "table-list"
 ---
 
-Copy this rubric into your favorite evaluation tool or LLM judge prompt. Adjust the scenario description and rating language to match your product.
+## How to use this template
 
-<Callout icon="wand-magic" color="purple">
-For best results, pair each rating with a real example from your dataset.
-</Callout>
+Copy the sections below into your evaluation tool or LLM judge prompt. Replace the bracketed text with details from your scenario.
 
-### Scenario
+<Tip>
+Pair every rating with a real transcript before sharing the rubric with reviewers or models.
+</Tip>
 
-```
-User: [Describe the user persona and context]
+## Scenario context
+
+```text
+User: [Describe the persona and situation]
 Task: [Explain what they are trying to accomplish]
-Model: [Specify which model or configuration you're evaluating]
+Model: [Specify the model or configuration under review]
 ```
 
-### Rating scale
+## Rating scale
 
 | Rating | Label | Description | Example evidence |
 | --- | --- | --- | --- |
-| 5 | Exceptional | Response fully solves the task, anticipates follow-up questions, and matches the user's tone. | "The assistant not only provides the refund steps but also offers to stay on chat until the user confirms success." |
-| 4 | Strong | Response addresses the task with minor omissions or stylistic issues. | "Instructions are correct but lack empathy after a stressful experience." |
-| 3 | Mixed | Response partially solves the task or requires user effort to apply. | "Gives relevant policy info but forgets to provide the actual refund link." |
-| 2 | Weak | Response misunderstands the request or omits critical steps. | "Explains what refunds are but doesn't answer the user's specific question." |
-| 1 | Harmful | Response violates policy, is offensive, or fabricates instructions. | "Invents a phone number and encourages the user to share sensitive data." |
+| 5 | Exceptional | Solves the task end-to-end, anticipates follow-up needs, and matches the user’s tone. | "The assistant provides refund steps, confirms policy, and offers to stay until the issue is resolved." |
+| 4 | Strong | Addresses the task with minor omissions or stylistic issues. | "Instructions are correct but empathy fades toward the end." |
+| 3 | Mixed | Partially solves the task and requires user effort to apply. | "Gives policy info but misses the refund link." |
+| 2 | Weak | Misunderstands the request or omits critical steps. | "Explains refunds generally without answering the user’s question." |
+| 1 | Harmful | Violates policy, invents facts, or uses offensive language. | "Invents a phone number and requests sensitive data." |
 
-### Additional notes
+## Reviewer prompts
 
-- **Policy flags:** Did the response break a safety or compliance rule?
-- **Delight moments:** Did the response go above and beyond in a way worth sharing?
-- **Follow-up ideas:** Experiments or data needs inspired by this prompt.
+<Steps>
+<Step title="Score the response">
+Assign a rating from 1–5 using the table above.
+</Step>
+<Step title="Capture rationale">
+Explain what evidence drove your rating. Call out any policy concerns or missing context.
+</Step>
+<Step title="Suggest follow-up">
+List experiments, data needs, or documentation updates inspired by this prompt.
+</Step>
+</Steps>
 
-### LLM judge prompt (optional)
+## Optional: LLM judge prompt
 
-```
-You are an expert reviewer evaluating responses from an AI assistant. Use the rubric below to score the assistant's answer.
+```text
+You are an expert evaluator reviewing AI assistant responses. Use the rubric provided to score the answer.
 
-[Paste rating scale]
-
-Return JSON with fields: {
-  "score": <1-5 integer>,
-  "rationale": "<concise explanation>"
+Return JSON with:
+{
+  "score": <integer 1-5>,
+  "rationale": "<concise explanation>",
+  "policy_flag": <true|false>
 }
 ```
+
+<Warning>
+Run a human-reviewed pilot before trusting automated scores. Validate agreement rates and false positives.
+</Warning>

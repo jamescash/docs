@@ -3,15 +3,15 @@ title: "Evaluation workflow"
 description: "Operationalize your evaluation program from idea to dashboard"
 ---
 
-Follow these loops to keep your evaluations sharp as models and products evolve.
-
 ## Map the lifecycle
+
+Successful evaluation programs move in tight loops. Revisit each stage frequently so insights stay fresh and actionable.
 
 <Diagram title="Evaluation lifecycle" height={320}>
   <DiagramNode x={10} y={50} title="Frame" description="Clarify the decision and select representative scenarios." icon="compass" />
-  <DiagramNode x={35} y={10} title="Design" description="Draft rubrics, success metrics, and reviewer guidance." icon="pen-ruler" />
-  <DiagramNode x={70} y={25} title="Collect" description="Source prompts, contexts, and gold answers if available." icon="boxes-packing" />
-  <DiagramNode x={85} y={70} title="Score" description="Run humans, LLM judges, or hybrid scoring pipelines." icon="scale-balanced" />
+  <DiagramNode x={35} y={10} title="Design" description="Draft rubrics, metrics, and reviewer guidance." icon="pen-ruler" />
+  <DiagramNode x={70} y={25} title="Collect" description="Source prompts, contexts, and gold answers." icon="boxes-packing" />
+  <DiagramNode x={85} y={70} title="Score" description="Run humans, LLM judges, or hybrid pipelines." icon="scale-balanced" />
   <DiagramNode x={45} y={85} title="Synthesize" description="Aggregate, visualize, and annotate findings." icon="chart-pie" />
   <DiagramConnector from={0} to={1} />
   <DiagramConnector from={1} to={2} />
@@ -20,45 +20,69 @@ Follow these loops to keep your evaluations sharp as models and products evolve.
   <DiagramConnector from={4} to={0} />
 </Diagram>
 
-Each loop should produce artifacts—rubrics, prompts, dashboards—that future you can reuse.
+<Info>
+Capture artifacts at every loop: changelogged rubrics, prompt sets, judge prompts, dashboards, and decision logs.
+</Info>
 
-## Tooling stack recommendations
+## Tooling stack
 
-| Layer | Purpose | Questions to ask |
+| Layer | Purpose | Key question |
 | --- | --- | --- |
-| Source control | Track rubric and prompt changes | Do we review diffs before shipping a new evaluation? |
-| Data warehouse | Store prompts, responses, and scores | Can we join with product telemetry to understand impact? |
-| Orchestration | Automate runs | Can we schedule nightly sweeps and on-demand experiments? |
-| Analytics | Share insights | Can stakeholders self-serve trends and drill into examples? |
+| Source control | Track rubric and prompt changes | Do we review diffs before shipping updates? |
+| Data warehouse | Store prompts, responses, and scores | Can we join with product telemetry to show impact? |
+| Orchestration | Automate scheduled and on-demand runs | Can anyone trigger a sweep without engineering support? |
+| Analytics | Share insights broadly | Do stakeholders self-serve trends and drill into examples? |
 
-## Guardrails for human-in-the-loop runs
+<Tip>
+Adopt lightweight templates for run logs and score exports. Consistency speeds audits and onboarding.
+</Tip>
 
-<Accordion>
-  <AccordionItem title="Recruit intentionally">
-    Invite reviewers who represent the diversity of your user base. Rotate them periodically to avoid fatigue and bias creep.
-  </AccordionItem>
-  <AccordionItem title="Train before scoring">
-    Walk through the rubric together, calibrate with example outputs, and capture disagreements as future training data.
-  </AccordionItem>
-  <AccordionItem title="Protect well-being">
-    Some evals involve sensitive content. Offer opt-outs, provide support resources, and remove traumatic prompts when possible.
-  </AccordionItem>
+## Human-in-the-loop guardrails
+
+<AccordionGroup>
+<Accordion title="Recruit intentionally">
+Invite reviewers who mirror your user base. Rotate assignments to manage fatigue and surface new perspectives.
 </Accordion>
 
-## Automate with empathy
+<Accordion title="Train before scoring">
+Walk through the rubric together, calibrate on borderline examples, and document points of confusion.
+</Accordion>
 
-Automation accelerates feedback, but keep humans in the loop to catch nuance. Combine approaches:
+<Accordion title="Protect well-being">
+Flag sensitive content in advance, provide opt-out paths, and partner with HR for support resources.
+</Accordion>
+</AccordionGroup>
 
-- **Heuristics:** Lightweight rules that catch obvious failures (PII leaks, policy violations).
-- **Model judges:** LLMs prompted with your rubric to pre-score outputs. Sample human audits ensure alignment.
-- **Live telemetry:** Instrument production flows to surface eval-triggering events, like repeated user edits or conversation abandonment.
+<Warning>
+Never surprise reviewers with traumatic content. Redact or remove prompts that violate your organization’s safety policies.
+</Warning>
+
+## Automation with empathy
+
+Automation accelerates coverage, but humans keep nuance. Combine approaches based on risk tolerance.
+
+- **Heuristics:** Lightweight rules that catch policy violations or technical failures.
+- **LLM judges:** Prompt models with your rubric to pre-score outputs. Sample human audits validate alignment.
+- **Live telemetry:** Instrument production flows to flag regressions triggered by real user behavior.
+
+<Note>
+Track agreement between humans and automated judges. A drop in agreement is an early indicator that rubrics or prompts need attention.
+</Note>
 
 ## Close the loop
 
-End every run with a narrative:
+<Steps>
+<Step title="Synthesize findings">
+Publish a narrative summary that highlights top wins, regressions, and surprises.
+</Step>
+<Step title="Link evidence">
+Attach transcripts, screenshots, and reproduction steps so product teams can act quickly.
+</Step>
+<Step title="Assign owners">
+Create follow-up tickets with clear owners and due dates. Confirm fixes in the next evaluation run.
+</Step>
+</Steps>
 
-1. Summarize the top wins and regressions in plain language.
-2. Link to reproduction steps or raw conversations.
-3. Assign owners and due dates for follow-up experiments.
-
-When teams act on eval results quickly, models improve faster and trust grows across the organization.
+<Check>
+End every run with a shared decision: ship, iterate, or halt. Clarity keeps momentum and builds trust in the evaluation program.
+</Check>

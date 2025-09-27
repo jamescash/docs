@@ -4,42 +4,54 @@ description: "Keep evaluations alive after launch"
 icon: "chart-line"
 ---
 
-Evaluations shouldn't gather dust after a launch. This playbook helps you turn one-off experiments into a living monitoring program.
+## Establish alert tiers
 
-## Define alerting tiers
+Define who responds to quality regressions and how quickly.
 
 | Tier | Description | Owner | Example trigger |
 | --- | --- | --- | --- |
 | **P0** | Immediate action required | On-call product lead | Safety guardrail failure > 0.5% |
-| **P1** | Investigate within a day | Evaluation program manager | Experience score drops > 0.3 week-over-week |
+| **P1** | Investigate within one day | Evaluation program manager | Experience score drops > 0.3 week-over-week |
 | **P2** | Track over time | Feature owner | Gradual latency increase across scenarios |
 
-## Instrument your dashboards
+<Warning>
+Without explicit owners, alerts drown in noise. Document who investigates and how to escalate.
+</Warning>
 
-- **Narrative widgets:** Combine charts with analyst commentary so stakeholders understand the "why".
-- **Drill-through examples:** Link each metric to underlying conversations or prompts for fast root cause analysis.
+## Instrument dashboards
+
+- **Narrative widgets:** Pair charts with analyst commentary so stakeholders understand the “why.”
+- **Drill-through examples:** Link every metric to transcripts or screenshots for rapid root-cause analysis.
 - **Health checklist:** Highlight when datasets, rubrics, or judge prompts are due for refresh.
+
+<Tip>
+Use color-blind-friendly palettes and include keyboard shortcuts so dashboards stay accessible.
+</Tip>
 
 ## Create a monitoring cadence
 
 <Steps>
-  <Step title="Daily pulse">
-    Quick scan for P0 incidents. Triage with engineering if guardrails trip.
-  </Step>
-  <Step title="Weekly sync">
-    Review evaluation trends with product and research partners. Decide which regressions warrant experiments.
-  </Step>
-  <Step title="Monthly retrospective">
-    Reflect on rubric effectiveness, dataset freshness, and automation coverage. Update your roadmap accordingly.
-  </Step>
+<Step title="Daily pulse">
+Scan for P0 incidents and trigger incident response if guardrails fail.
+</Step>
+<Step title="Weekly sync">
+Review trends with product, research, and support partners. Decide which regressions warrant experiments.
+</Step>
+<Step title="Monthly retrospective">
+Assess rubric effectiveness, dataset freshness, and automation coverage. Update your roadmap accordingly.
+</Step>
 </Steps>
 
 ## Feedback loop rituals
 
-<Callout icon="repeat" color="cyan">
-Send a celebratory recap when metrics rebound or a regression is crushed. Reinforcing wins keeps teams engaged with the program.
-</Callout>
+<Info>
+Celebrate rebounds and resolved regressions. Recognizing wins keeps teams invested in evaluation quality.
+</Info>
 
-- Host "eval office hours" for teams launching new features.
-- Publish a changelog that logs dataset, rubric, and pipeline updates.
+- Host “eval office hours” for teams launching new features.
+- Publish a changelog documenting dataset, rubric, and pipeline updates.
 - Invite leadership to quarterly readouts featuring user stories and strategic bets influenced by evaluation insights.
+
+<Check>
+Monitoring is working when stakeholders resolve issues before customers notice them.
+</Check>

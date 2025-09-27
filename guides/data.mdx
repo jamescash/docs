@@ -4,42 +4,70 @@ description: "Curate evaluation datasets that stay relevant"
 icon: "database"
 ---
 
-Your evaluation is only as good as the scenarios it covers. Treat prompt curation like product research.
-
 ## Build a scenario library
 
-1. **Source widely.** Pull examples from support tickets, search logs, UX research, and synthetic stress tests.
-2. **Label context.** Tag each scenario with metadata such as persona, language, risk level, and product surface.
-3. **Store history.** Keep retired prompts in an archive—you may need them when regressions return.
+Treat evaluation data like a living research repository.
+
+<Steps>
+<Step title="Source widely">
+Pull prompts from support tickets, search logs, UX research, synthetic stress tests, and proactive red-team exercises.
+</Step>
+<Step title="Tag context">
+Label each scenario with persona, language, risk level, product surface, and freshness date.
+</Step>
+<Step title="Archive history">
+Keep retired prompts and explain why they left rotation. Past regressions resurface when conditions change.
+</Step>
+</Steps>
 
 ## Refresh with intention
 
-<Accordion>
-  <AccordionItem title="Cadence">
-    Review your library every sprint. Rotate 10–20% of prompts to avoid overfitting and cover new capabilities.
-  </AccordionItem>
-  <AccordionItem title="Diversity">
-    Check that your dataset represents the voices you serve. Monitor distributions by region, language, accessibility needs, and expertise level.
-  </AccordionItem>
-  <AccordionItem title="Ethics">
-    Establish a review council for sensitive prompts. Get sign-off before introducing content that may trigger trauma or legal exposure.
-  </AccordionItem>
+<AccordionGroup>
+<Accordion title="Cadence">
+Review the dataset every sprint. Rotate 10–20% of prompts to cover new features and prevent overfitting.
 </Accordion>
+<Accordion title="Representation">
+Compare your dataset distribution to your real user base. Balance languages, accessibility needs, expertise levels, and risk tiers.
+</Accordion>
+<Accordion title="Ethics">
+Establish a review council for sensitive content. Obtain consent where required and document redaction rules.
+</Accordion>
+</AccordionGroup>
 
-## Collect gold answers (when possible)
+<Warning>
+Never store personal data in evaluation logs without encryption and access controls that match production standards.
+</Warning>
 
-- **Leverage SMEs.** Invite subject-matter experts to draft model answers for high-stakes scenarios.
-- **Capture rationale.** Ask SMEs to explain *why* their answer is correct. The rationale can power future rubrics and fine-tuning.
-- **Track freshness.** Note when ground truth expires (e.g., policy or pricing updates) and set reminders to refresh.
+## Capture gold answers
 
-## Handle production data responsibly
+- Partner with subject-matter experts to draft ideal responses for critical scenarios.
+- Ask contributors to explain *why* their answer is correct. Rationales power future rubrics and LLM judge prompts.
+- Track expiration dates for ground truth tied to policy, pricing, or product changes.
 
-<Callout icon="shield" color="rose">
-When sampling real user conversations, scrub personal data, secure storage, and obtain consent where required. High-quality evals should enhance trust, not erode it.
-</Callout>
+## Use production data responsibly
 
-## Collaborate with data partners
+<Note>
+Mask identifiers before exporting data. Align with legal and privacy teams on retention periods and deletion workflows.
+</Note>
 
-- Align with data engineering on schemas and retention policies.
-- Share evaluation insights with analytics teams to influence data collection roadmaps.
-- Offer product squads a "prompt of the week" so they feel the pulse of real user challenges.
+<Steps>
+<Step title="Scrub sensitive details">
+Remove personal identifiers, account numbers, and secrets before sharing prompts.
+</Step>
+<Step title="Secure storage">
+Store evaluation datasets in systems with audit trails, role-based access, and incident response plans.
+</Step>
+<Step title="Communicate purpose">
+Inform data owners and reviewers how the dataset supports quality improvements.
+</Step>
+</Steps>
+
+## Collaborate across teams
+
+- Share evaluation insights with analytics and research partners to influence data collection roadmaps.
+- Offer product squads a "prompt of the week" spotlight so they stay close to user realities.
+- Invite policy and legal stakeholders to quarterly reviews to confirm coverage of regulated scenarios.
+
+<Check>
+If every partner understands how their contributions shape the dataset, your evaluation program stays relevant and trusted.
+</Check>

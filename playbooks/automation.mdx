@@ -4,15 +4,19 @@ description: "Scale evaluation coverage without losing signal"
 icon: "robot"
 ---
 
-Automation extends your reach so you can catch regressions before users do. Use this playbook to design pipelines that are fast, transparent, and trustworthy.
+## Why automate
 
-## When to automate
+Automation catches regressions early, provides consistent coverage, and frees humans to focus on nuance. Use it to augment—not replace—expert judgment.
 
 | Signal | Automate when... | Stay manual when... |
 | --- | --- | --- |
-| Guardrail checks | Rules rarely change and failures are binary | Policies are evolving or context heavy |
-| LLM judge scoring | Rubric language is crisp and pilot agreement >80% | Stakes are high or disagreement remains high |
-| Regression suites | Prompts are stable and map to specific release criteria | You're still exploring what "good" looks like |
+| Guardrail checks | Policies are stable and violations are binary | Rules are evolving or context heavy |
+| LLM judge scoring | Rubric language is crisp and pilot agreement > 80% | Stakes are high or disagreement remains high |
+| Regression suites | Prompts map to specific release criteria | You are still exploring what “good” looks like |
+
+<Tip>
+Start with a nightly run against a small, high-impact prompt set. Expand coverage as confidence grows.
+</Tip>
 
 ## Architecture blueprint
 
@@ -30,26 +34,42 @@ Automation extends your reach so you can catch regressions before users do. Use 
 
 ## Prompting LLM judges
 
-- **Mirror the rubric.** Paste the exact evaluation rubric into the system prompt.
-- **Ask for rationale.** Request a short explanation along with the score for auditing.
-- **Calibrate temperature.** Set `temperature=0` for determinism. Use `top_p` or `logprobs` if available to gauge confidence.
+<Steps>
+<Step title="Mirror the rubric">
+Paste the exact evaluation rubric into the system prompt. Clarity prevents drift over time.
+</Step>
+<Step title="Capture rationale">
+Request a concise explanation with each score for auditing and debugging.
+</Step>
+<Step title="Tune determinism">
+Set `temperature=0` and monitor log probabilities or confidence outputs where available.
+</Step>
+</Steps>
 
-## Monitoring drift
+<Warning>
+Never ship automated scores without a human-reviewed pilot. Validate agreement and false-positive rates first.
+</Warning>
 
-<Accordion>
-  <AccordionItem title="Agreement tracking">
-    Compare model-judge scores with periodic human audits. Trigger retraining if agreement falls below your threshold.
-  </AccordionItem>
-  <AccordionItem title="Data freshness">
-    Alert when a scenario hasn't been updated in >60 days or when product changes invalidate prompts.
-  </AccordionItem>
-  <AccordionItem title="Latency & cost">
-    Visualize runtime and spend per run. Highlight outliers to optimize infrastructure.
-  </AccordionItem>
+## Monitor drift
+
+<AccordionGroup>
+<Accordion title="Agreement tracking">
+Compare model-judge scores with periodic human audits. Trigger retraining when agreement falls below your threshold.
 </Accordion>
+<Accordion title="Data freshness">
+Alert when a scenario has not been updated in 60 days or product changes invalidate prompts.
+</Accordion>
+<Accordion title="Latency and cost">
+Track runtime and spend per run. Highlight outliers and optimize infrastructure regularly.
+</Accordion>
+</AccordionGroup>
 
-## Communicating results
+## Communicate results
 
-- Pipe critical regressions into incident channels with owner tags.
-- Share weekly digests that combine quantitative trends with a "story of the week" example.
-- Provide self-serve dashboards for product teams to explore their features.
+- Pipe critical regressions into incident channels with owner tags and remediation guidance.
+- Share weekly digests that combine quantitative trends with a “story of the week” example.
+- Provide self-serve dashboards so product teams can explore their features in detail.
+
+<Check>
+Automation succeeds when stakeholders trust the alerts enough to act immediately.
+</Check>
