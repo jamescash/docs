@@ -72,6 +72,7 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
+    "sticky": true,
     "links": [
       {
         "label": "Contribute",
