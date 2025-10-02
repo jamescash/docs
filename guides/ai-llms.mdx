@@ -1,0 +1,61 @@
+---
+title: "AI and LLMs 101"
+description: "A practical introduction to Artificial Intelligence and Large Language Models"
+---
+
+## What is AI?
+
+Artificial Intelligence (AI) refers to computer systems designed to perform tasks that typically require human intelligence—understanding language, recognizing patterns, making decisions, or generating content.
+
+<Info>
+In this playbook, we focus on AI systems that process and generate natural language to power product experiences.
+</Info>
+
+## What are LLMs?
+
+Large Language Models (LLMs) are AI models trained on vast text corpora to predict the next token in a sequence. This simple objective, scaled with data and compute, enables capabilities like drafting content, answering questions, summarizing text, and following instructions.
+
+- **Inputs:** prompts, system instructions, and optional context (documents, tools, or structured data)
+- **Outputs:** tokens forming text, code, or structured formats like JSON
+
+## How LLMs work (at a glance)
+
+- **Tokenization:** Text is split into tokens (sub-word units). Models operate over tokens, not characters.
+- **Transformers:** The architecture uses self-attention to weigh relevant context efficiently across long inputs.
+- **Pretraining:** Models learn general language patterns by predicting next tokens on large datasets.
+- **Finetuning & alignment:** Additional training (instruction tuning, RLHF/DPO) steers models toward helpful, honest, and safe behavior.
+
+<Tip>
+Despite impressive outputs, LLMs are probabilistic next-token predictors—not databases or oracles. Always validate critical claims.
+</Tip>
+
+## Strengths and limits
+
+- **Strengths:** rapid drafting, summarization, translation, pattern recognition in text, flexible interfaces
+- **Limits:** hallucinations, outdated knowledge, sensitivity to prompt phrasing, difficulty with precise computation or long reasoning without scaffolding
+
+<Warning>
+Never rely solely on model outputs for high-risk domains without human review, guardrails, and clear escalation paths.
+</Warning>
+
+## Common terms
+
+- **Prompt:** The instructions and context provided to the model
+- **Context window:** Maximum tokens of input plus output the model can handle at once
+- **Temperature/top‑p:** Parameters that control randomness and diversity of outputs
+- **System prompt:** High-level guidance that sets persona, goals, or constraints
+- **Tools/functions:** External capabilities the model can call (search, code execution, databases)
+
+## Choosing a model
+
+Match the model to the job:
+
+- **General assistants:** Balanced instruction-following and safety
+- **Reasoning tasks:** Models trained for extended or multi-step reasoning
+- **Cost-sensitive flows:** Smaller or open models with prompt engineering and evaluation
+- **Private data or latency needs:** On-prem or edge-deployed models with tight context windows
+
+<Note>
+Evaluate models against your scenarios and rubrics. Track agreement between human reviews and automated judges before broad rollout.
+</Note>
+
