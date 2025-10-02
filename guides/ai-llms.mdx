@@ -1,0 +1,55 @@
+---
+title: "AI and LLMs 101"
+description: "A practical introduction to Artificial Intelligence and Large Language Models"
+---
+
+## What is AI?
+
+Artificial Intelligence (AI) refers to systems that perform language understanding, pattern recognition, decision-making, and content generation.
+
+<Info>
+This playbook focuses on language AI that powers product experiences.
+</Info>
+
+## What are LLMs?
+
+Large Language Models (LLMs) predict the next token to generate text, code, and summaries from prompts and optional context.
+
+## How LLMs work (at a glance)
+
+- **Tokenization:** Text is split into subword tokens.
+- **Transformers:** Self-attention weighs relevant context across long inputs.
+- **Training:** Pretraining plus alignment (instruction tuning, RLHF/DPO) steers behavior.
+
+<Tip>
+Treat outputs as plausible text, not facts—verify critical claims.
+</Tip>
+
+## Strengths and limits
+
+- **Strengths:** drafting, summarization, Q&A, translation, flexible interfaces
+- **Limits:** hallucinations, outdated knowledge, prompt sensitivity, weak math/logic without scaffolding
+
+<Warning>
+Use human review and guardrails for high‑risk flows.
+</Warning>
+
+## Common terms
+
+- **Prompt:** Instructions and context for the model
+- **Context window:** Max tokens of input plus output
+- **Temperature/top‑p:** Controls randomness/diversity
+- **Tools/functions:** External calls (search, code, databases)
+
+## Choosing a model
+
+Match the model to the job:
+
+- **General purpose:** Balanced instruction-following and safety
+- **Reasoning-focused:** Trained for multi-step reasoning
+- **Cost/latency constrained:** Smaller/open or on‑prem/edge deployments
+
+<Note>
+Evaluate on your scenarios and rubrics; track agreement with human reviews.
+</Note>
+
