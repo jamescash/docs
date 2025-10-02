@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "AI Evaluation Playbook",
   "colors": {
-    "primary": "#6366F1",
-    "light": "#A855F7",
-    "dark": "#4338CA"
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#1D4ED8"
   },
   "favicon": "/favicon.svg",
   "navigation": {
